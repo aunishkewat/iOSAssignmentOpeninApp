@@ -10,8 +10,8 @@ import Foundation
 class DashboardViewModel: ObservableObject {
     
     @Published var graphData: [GraphData] = []
-    @Published var recentLinks: [Link] = []
-    @Published var topLinks: [Link] = []
+    @Published var recentLinks: [RecentLink] = []
+    @Published var topLinks: [TopLink] = []
     @Published var userName: String = "Ajay Manva"
     
     func fetchDashboardData() {

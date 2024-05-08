@@ -95,7 +95,10 @@ struct LinkSegmentView: View {
 
         VStack {
             HStack {
-                Button(action: { self.selectedSegment = 0 }) {
+                Button(action: { 
+                    self.selectedSegment = 0
+                    vm.fetchDashboardData()
+                }) {
                     Text("Top Links")
                         .foregroundColor(self.selectedSegment == 0 ? .white : .gray)
                         .padding(.vertical, 8)
@@ -105,7 +108,10 @@ struct LinkSegmentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
 
-                Button(action: { self.selectedSegment = 1 }) {
+                Button(action: { 
+                    self.selectedSegment = 1
+                    vm.fetchDashboardData()
+                }) {
                     Text("Recent Links")
                         .foregroundColor(self.selectedSegment == 1 ? .white : .gray)
                         .padding(.vertical, 8)
@@ -118,17 +124,16 @@ struct LinkSegmentView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
 
+            
             ScrollView {
-                if selectedSegment == 0 {
-                    VStack {
+                VStack {
+                    if selectedSegment == 0 {
                         ForEach(vm.topLinks.indices, id: \.self) { index in
                             LinkView(name: vm.topLinks[index].title ?? "", url: vm.topLinks[index].webLink ?? "", imageName: vm.topLinks[index].originalImage ?? "", date: "", clicks: vm.topLinks[index].totalClicks ?? 0)
                         }
-                    }
-                } else {
-                    VStack {
+                    } else {
                         ForEach(vm.recentLinks.indices, id: \.self) { index in
-                            LinkView(name: vm.topLinks[index].title ?? "", url: vm.topLinks[index].webLink ?? "", imageName: vm.topLinks[index].originalImage ?? "", date: "", clicks: vm.topLinks[index].totalClicks ?? 0)
+                            LinkView(name: vm.recentLinks[index].title ?? "", url: vm.recentLinks[index].webLink ?? "", imageName: vm.recentLinks[index].originalImage ?? "", date: "", clicks: vm.recentLinks[index].totalClicks ?? 0)
                         }
                     }
                 }
