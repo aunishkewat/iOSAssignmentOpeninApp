@@ -34,7 +34,7 @@ class DashboardViewModel: ObservableObject {
                     // Update graphData
                     DispatchQueue.main.async {
                         self.graphData.removeAll() // Clear existing data
-                        for (hour, clicks) in response.data.overallUrlChart {
+                        for (hour, clicks) in response.data.overallUrlChart ?? [:] {
                             self.graphData.append(GraphData(hour: hour, clicks: clicks))
                         }
                         self.recentLinks = response.data.recentLinks

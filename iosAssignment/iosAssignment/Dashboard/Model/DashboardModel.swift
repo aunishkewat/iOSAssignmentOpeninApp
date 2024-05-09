@@ -45,7 +45,7 @@ struct DashboardData: Codable {
     let recentLinks: [RecentLink]
     let topLinks: [TopLink]
     let favouriteLinks: [Link]
-    let overallUrlChart: [String: Int]
+    let overallUrlChart: [String: Int]?
     
     enum CodingKeys: String, CodingKey {
         case recentLinks = "recent_links"
